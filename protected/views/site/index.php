@@ -35,13 +35,13 @@ function getLikeButton($data)
     if (in_array($data['id'], $liked)) {
         
     } else {
-        return CHtml::link("+1", "#", array("data-id" => $data["id"], "class" => "like btn"));
+        return CHtml::link('<i class="icon-thumbs-up"></i>', "#", array("data-id" => $data["id"], "class" => "like btn"));
     }
 }
 
 function getTweetButton($data)
 {
-    return '<a target="_blank" class="btn" href="https://twitter.com/intent/tweet?button_hashtag=botsikko&text=' . $data['heading'] . '" class="twitter-hashtag-button">Twiittaa</a>';
+    return '<a target="_blank" class="btn" href="https://twitter.com/intent/tweet?button_hashtag=botsikko&text=' . urlencode($data['heading']) . '" class="twitter-hashtag-button"><i class="icon-twitter"></i> Twiittaa</a>';
 }
 
 $this->widget('bootstrap.widgets.TbExtendedGridView', array(
@@ -73,13 +73,19 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
         ),
         array(
             'header' => 'Googlaa',
-            'value' => 'CHtml::link("Googlaa", "https://www.google.fi/#q=" . $data["heading"], array("class" => "btn", "target" => "_blank"))',
+            'value' => 'CHtml::link("<i class=\"icon-search\"></i> Googlaa", "https://www.google.fi/#q=" . urlencode($data["heading"]), array("class" => "btn", "target" => "_blank"))',
             'type' => 'raw',
+            'headerHtmlOptions' => array(
+                'width' => '100px',
+            )
         ),
         array(
             'header' => 'Twiittaa',
             'value' => 'getTweetButton($data);',
             'type' => 'raw',
+            'headerHtmlOptions' => array(
+                'width' => '100px',
+            )
         ),
         array(
             'header' => 'Generoitu',
