@@ -79,7 +79,7 @@ class Heading extends CActiveRecord
         // @todo Please modify the following code to remove attributes that should not be searched.
 
         $criteria = new CDbCriteria;
-
+        $criteria->condition = 'generated > ' . (time() - 86400) . ' OR score > 0 AND generated > ' . (time() - 7 * 86400);
         $criteria->compare('id', $this->id);
         $criteria->compare('heading', $this->heading, true);
         $criteria->compare('tweeted', $this->tweeted);

@@ -1,4 +1,5 @@
 assets/*
+protected/data/*
 protected/runtime/*
 protected/tests/report/*
 protected/config/bootstrap.php
