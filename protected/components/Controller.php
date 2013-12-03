@@ -6,11 +6,12 @@
  */
 class Controller extends CController
 {
+
     /**
      * @var string the default layout for the controller view. Defaults to '//layouts/column1',
      * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
      */
-    public $layout = '//layouts/base';
+    public $layout = '//layouts/main';
 
     /**
      * @var array context menu items. This property will be assigned to {@link CMenu::items}.
@@ -24,5 +25,24 @@ class Controller extends CController
      */
     public $breadcrumbs = array();
 
+    public function beforeAction($action)
+    {
+        Yii::app()->clientScript->registerScriptFile(
+                Yii::app()->assetManager->publish(
+                        Yii::getPathOfAlias('webroot.protected.components.timeago') . '/timeago.js'
+                )
+        );
+        Yii::app()->clientScript->registerScriptFile(
+                Yii::app()->assetManager->publish(
+                        Yii::getPathOfAlias('webroot.protected.components.timeago') . '/timeago.fi.js'
+                )
+        );
+        Yii::app()->clientScript->registerCssFile(
+                Yii::app()->assetManager->publish(
+                        Yii::getPathOfAlias('webroot.css') . '/app.css'
+                )
+        );
+        return parent::beforeAction($action);
+    }
 
 }

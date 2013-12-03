@@ -52,7 +52,7 @@ rm -rf "$path_to_shared/assets/*";
 
 if [ ! -L "../assets"  ]
 then
-ln -s "static/assets" "../assets";
+ln -s "shared/assets" "../assets";
 fi
 
 touch "$path_to_shared/assets";
