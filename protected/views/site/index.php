@@ -35,7 +35,7 @@ function getLikeButton($data)
     if (in_array($data['id'], $liked)) {
         
     } else {
-        return CHtml::link('<i class="icon-thumbs-up"></i>', "#", array("data-id" => $data["id"], "class" => "like btn"));
+        return CHtml::link('<i class="icon-thumbs-up"></i>', "#", array("data-id" => $data["id"], "class" => "like btn btn-primary"));
     }
 }
 
