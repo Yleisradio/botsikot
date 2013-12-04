@@ -1,7 +1,7 @@
 <?php
 
 return CMap::mergeArray(
-                require(dirname(__FILE__) . '/development.php'), array(
+                require(dirname(__FILE__) . '/common.php'), array(
             'components' => array(
                 'fixture' => array(
                     'class' => 'system.test.CDbFixtureManager',

@@ -80,5 +80,9 @@ return array(
         ),
     ),
     'params' => array(
+        'oauthAccessToken' => "",
+        'oauthAccessTokenSecret' => "",
+        'consumerKey' => "",
+        'consumerSecret' => "",
     ),
 );

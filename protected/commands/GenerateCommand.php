@@ -28,7 +28,7 @@ class GenerateCommand extends CConsoleCommand
                 $headingModel = Heading::model()->findByAttributes(array('heading' => $heading));
                 if (!$headingModel) {
                     $headingModel = new Heading();
-                    $headingModel->heading = $heading;
+                    $headingModel->heading = trim($heading);
                     $headingModel->generated = time();
                     $headingModel->save();
                 }
