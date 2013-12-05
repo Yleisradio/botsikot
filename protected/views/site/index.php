@@ -1,5 +1,5 @@
 <p>
-    Botsikot ovat koneelliseesti luotuja fiktiivisiä uutisotsikoita. Voit peukuttaa hauskoja botsikoita. <a href="https://twitter.com/botsikot">@botsikot</a> twiittaa peukutetut.
+    Botsikot ovat koneelliseesti luotuja fiktiivisiä uutisotsikoita. Voit peukuttaa hauskoja botsikoita. <a href="https://twitter.com/botsikot">@botsikot</a> twiittaa eniten peukutetut.
 </p>
 <?php
 

@@ -1,5 +1,5 @@
 <p>
-    Filtteröimätön lista generoiduista botsikoista. Peukuta hauskimpia, jotta ne nousevat botsikot-listalle ja päätyvät <a href="https://twitter.com/botsikot">@botsikot</a> twiittaamiksi.
+    Filtteröimätön lista tänään generoiduista botsikoista. Peukuta hauskimpia, jotta ne nousevat botsikot-listalle ja päätyvät <a href="https://twitter.com/botsikot">@botsikot</a> twiittaamiksi.
 </p>
 <?php
 
