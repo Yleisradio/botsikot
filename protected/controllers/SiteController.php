@@ -24,7 +24,7 @@ class SiteController extends Controller
             $headings->attributes = $_GET['Heading'];
         }
         $headingsData = $headings->searchNew();
-        $this->render('index', array(
+        $this->render('new', array(
             'headings' => $headings,
             'headingsData' => $headings->searchNew(),
         ));
@@ -38,7 +38,7 @@ class SiteController extends Controller
             $headings->attributes = $_GET['Heading'];
         }
         $headingsData = $headings->searchBest();
-        $this->render('index', array(
+        $this->render('best', array(
             'headings' => $headings,
             'headingsData' => $headings->searchBest(),
         ));
