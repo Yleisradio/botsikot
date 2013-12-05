@@ -3,6 +3,9 @@
         jQuery("abbr.timeago").timeago();
     });
 </script>
+<p>
+    Botsikot ovat koneelliseesti luotuja fiktiivisiä uutisotsikoita. Voit antaa pisteitä hauskoille otsikoille. <a href="https://twitter.com/botsikot">@Botsikot</a> tweettaa eniten pisteitä saaneet.
+</p>
 <?php
 $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'id' => 'all-headings-grid',

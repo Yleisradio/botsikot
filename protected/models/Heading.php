@@ -116,7 +116,7 @@ class Heading extends CActiveRecord
     public function searchBest()
     {
         $criteria = new CDbCriteria();
-        $criteria->condition = 'score > 1';
+        $criteria->condition = 'score > 0';
         return $this->search($criteria);
     }
 
