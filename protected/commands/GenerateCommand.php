@@ -14,15 +14,16 @@ class GenerateCommand extends CConsoleCommand
                 AND url NOT LIKE  "%areena%"';
         $command = Yii::app()->db->createCommand($sql);
         $sites = $command->queryAll();
-        $headings = fopen('data/headings', 'w');
+        $headings = fopen(Yii::app()->basePath . '/data/headings', 'w');
         foreach ($sites as $site) {
             fputs($headings, $site['title'] . "\r\n");
         }
         fclose($headings);
 
-        exec('python ' . Yii::app()->basePath . '/python/titles.py > ' . Yii::app()->basePath . '/data/generated_headings');
-
-        $generatedHeadings = fopen('data/generated_headings', 'r');
+        $cmd = 'python ' . Yii::app()->basePath . '/python/titles.py ' . Yii::app()->basePath . '/data/headings'  . ' > ' . Yii::app()->basePath . '/data/generated_headings';
+        exec($cmd);
+        
+        $generatedHeadings = fopen(Yii::app()->basePath . '/data/generated_headings', 'r');
         if ($generatedHeadings) {
             while (($heading = fgets($generatedHeadings, 4096)) !== false) {
                 $headingModel = Heading::model()->findByAttributes(array('heading' => $heading));

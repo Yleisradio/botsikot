@@ -4,7 +4,7 @@ import sys
 from collections import defaultdict
 from random import random
   
-archive = open("data/headings")
+archive = open(sys.argv[1])
 titles = archive.read().split("\n")
 archive.close()
 markov_map = defaultdict(lambda:defaultdict(int))
@@ -35,7 +35,7 @@ def sample(items):
     return next_word
  
 sentences = []
-while len(sentences) < 300:
+while len(sentences) < 500:
     sentence = []
     next_word = sample(markov_map[''].items())
     while next_word != '':
