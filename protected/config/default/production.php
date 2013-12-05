@@ -18,4 +18,9 @@ return array(
             'class' => 'ext.minScript.controllers.ExtMinScriptController',
         ),
     ),
+    'params' => array(
+        'googleAnalytics' => array(
+            'id' => '',
+        )
+    ),
 );
