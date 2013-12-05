@@ -6,7 +6,7 @@
 <?php
 $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'id' => 'all-headings-grid',
-    'dataProvider' => $headings->search(),
+    'dataProvider' => $headingsData,
     'filter' => $headings,
     'type' => 'striped bordered condensed',
     'summaryText' => false,

@@ -74,29 +74,50 @@ class Heading extends CActiveRecord
      * @return CActiveDataProvider the data provider that can return the models
      * based on the search/filter conditions.
      */
-    public function search()
+    public function search($criteria = null, $sort = null)
     {
-        // @todo Please modify the following code to remove attributes that should not be searched.
 
-        $criteria = new CDbCriteria;
-        $criteria->condition = 'generated > ' . (time() - 86400) . ' OR score > 0 AND generated > ' . (time() - 7 * 86400);
+        if (!$criteria) {
+            $criteria = new CDbCriteria;
+            $criteria->condition = 'tweeted = 0 AND (generated > ' . (time() - 86400) . ' OR score > 0 AND generated > ' . (time() - 7 * 86400) . ')';
+        }
         $criteria->compare('id', $this->id);
         $criteria->compare('heading', $this->heading, true);
-        $criteria->compare('tweeted', $this->tweeted);
         $criteria->compare('score', $this->score);
 
-        $sort = new CSort();
-        $sort->defaultOrder = array(
-            'score' => CSort::SORT_DESC,
-        );
+        if (!$sort) {
+            $sort = new CSort();
+            $sort->defaultOrder = array(
+                'score' => CSort::SORT_DESC,
+            );
+        }
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
             'pagination' => array(
-                'pageSize' => 20,
+                'pageSize' => 10,
             ),
             'sort' => $sort,
         ));
+    }
+
+    public function searchNew()
+    {
+        $criteria = new CDbCriteria();
+        $criteria->condition = 'generated > ' . (time() - 86400);
+
+        $sort = new CSort();
+        $sort->defaultOrder = array(
+            'generated' => CSort::SORT_DESC,
+        );
+        return $this->search($criteria, $sort);
+    }
+
+    public function searchBest()
+    {
+        $criteria = new CDbCriteria();
+        $criteria->condition = 'score > 1';
+        return $this->search($criteria);
     }
 
     /**

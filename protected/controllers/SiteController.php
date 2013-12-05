@@ -12,6 +12,35 @@ class SiteController extends Controller
         }
         $this->render('index', array(
             'headings' => $headings,
+            'headingsData' => $headings->search(),
+        ));
+    }
+
+    public function actionNew()
+    {
+        $headings = new Heading('search');
+        $headings->unsetAttributes();
+        if (isset($_GET['Heading'])) {
+            $headings->attributes = $_GET['Heading'];
+        }
+        $headingsData = $headings->searchNew();
+        $this->render('index', array(
+            'headings' => $headings,
+            'headingsData' => $headings->searchNew(),
+        ));
+    }
+
+    public function actionBest()
+    {
+        $headings = new Heading('search');
+        $headings->unsetAttributes();
+        if (isset($_GET['Heading'])) {
+            $headings->attributes = $_GET['Heading'];
+        }
+        $headingsData = $headings->searchBest();
+        $this->render('index', array(
+            'headings' => $headings,
+            'headingsData' => $headings->searchBest(),
         ));
     }
 
