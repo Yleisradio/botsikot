@@ -20,19 +20,16 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
             'headerHtmlOptions' => array(
                 'width' => '50px',
             ),
-            'sortable' => false,
         ),
         array(
             'header' => '',
             'value' => '$this->grid->controller->widget("LikeButton", array("headingId" => $data["id"]), true);',
             'type' => 'raw',
-            'sortable' => false,
         ),
         array(
             'header' => 'Otsikko',
             'name' => 'heading',
             'type' => 'raw',
-            'sortable' => false,
         ),
         array(
             'value' => 'CHtml::link("<i class=\"icon-search\"></i> Googlaa", "https://www.google.fi/#q=" . urlencode($data["heading"]), array("class" => "btn", "target" => "_blank"))',
@@ -40,7 +37,6 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
             'headerHtmlOptions' => array(
                 'width' => '100px',
             ),
-            'sortable' => false,
         ),
         array(
             'value' => '$this->grid->controller->widget("TweetButton", array("hashtag" => "botsikko", "text" => $data["heading"]), true)',
@@ -48,14 +44,12 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
             'headerHtmlOptions' => array(
                 'width' => '100px',
             ),
-            'sortable' => false,
         ),
         array(
             'header' => 'Luotu',
             'name' => 'generated',
             'value' => 'Timeago::timeagoOrUnknown($data["generated"])',
             'type' => 'raw',
-            'sortable' => false,
         ),
     )
         )

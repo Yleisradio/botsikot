@@ -105,9 +105,12 @@ class Heading extends CActiveRecord
     {
         $criteria = new CDbCriteria();
         $criteria->condition = 'generated > ' . (time() - 86400);
-        $criteria->order = 'rand()';
 
-        return $this->search($criteria);
+        $sort = new CSort();
+        $sort->defaultOrder = array(
+            'generated' => CSort::SORT_DESC,
+        );
+        return $this->search($criteria, $sort);
     }
 
     public function searchBest()
