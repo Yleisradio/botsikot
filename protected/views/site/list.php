@@ -25,6 +25,9 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
             'header' => '',
             'value' => '$this->grid->controller->widget("LikeButton", array("headingId" => $data["id"], "likes" => $data["score"]), true);',
             'type' => 'raw',
+            'headerHtmlOptions' => array(
+                'width' => '90px',
+            ),
         ),
         array(
             'header' => 'Otsikko',
