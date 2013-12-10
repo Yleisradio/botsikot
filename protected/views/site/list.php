@@ -22,7 +22,8 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'responsiveTable' => true,
     'columns' => array(
         array(
-            'header' => '',
+            'name' => 'score',
+            'header' => 'Peukut',
             'value' => '$this->grid->controller->widget("LikeButton", array("headingId" => $data["id"], "likes" => $data["score"]), true);',
             'type' => 'raw',
             'headerHtmlOptions' => array(
