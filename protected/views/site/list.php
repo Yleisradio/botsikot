@@ -33,7 +33,7 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
         array(
             'header' => 'Otsikko',
             'name' => 'heading',
-            'value' => 'CHtml::link($data["heading"], array("site/heading", "id" => $data["id"]));',
+            'value' => 'CHtml::link($data["heading"], Yii::app()->getBaseUrl(true) . "/botsikko?id=" . $data["id"]);',
             'type' => 'raw',
         ),
         array(
