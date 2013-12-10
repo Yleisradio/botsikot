@@ -1,3 +1,23 @@
 .top-container {
     margin-top: 70px;
 }
+
+.likes {
+    display: inline-block;
+    background-color: white;
+    color: black;
+    padding: 0px 5px;
+    border: 1px solid black;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.like.btn-inverse {
+    cursor: default;
+}
+
+.buttons .btn {
+    margin: 0 30px 30px 0;
+}
