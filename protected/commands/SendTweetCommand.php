@@ -5,8 +5,6 @@ class SendTweetCommand extends CConsoleCommand
 
     public function run()
     {
-
-
         $criteria = new CDbCriteria();
         $criteria->condition = 'score > 0 AND tweeted = 0';
         $criteria->order = 'score DESC';
@@ -27,7 +25,7 @@ class SendTweetCommand extends CConsoleCommand
             $requestMethod = 'POST';
 
             $postfields = array(
-                'status' => $heading->heading . ' #botsikko',
+                'status' => $heading->heading . ' ' . Yii::app()->params['tweetLinkBaseUrl'] . "/botsikko?id=" . $heading->id . ' #botsikko',
             );
 
             $twitter = new TwitterAPIExchange($settings);

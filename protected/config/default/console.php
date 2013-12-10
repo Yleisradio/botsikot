@@ -27,5 +27,6 @@ return array(
         ),
     ),
     'params' => array(
+        'tweetLinkBaseUrl' => '',
     ),
 );
