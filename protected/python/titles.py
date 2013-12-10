@@ -35,7 +35,7 @@ def sample(items):
     return next_word
  
 sentences = []
-while len(sentences) < 500:
+while len(sentences) < 100:
     sentence = []
     next_word = sample(markov_map[''].items())
     while next_word != '':

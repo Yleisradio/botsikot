@@ -1,6 +1,14 @@
 <script type="text/javascript">
     $(document).ready(function() {
         jQuery("abbr.timeago").timeago();
+
+        likeButton.setOnSuccess(function() {
+            $('#all-headings-grid').yiiGridView.update('all-headings-grid', {
+                complete: function() {
+                    likeButton.bind();
+                }
+            });
+        });
     });
 </script>
 <?php
@@ -10,25 +18,18 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'filter' => $headings,
     'type' => 'striped bordered condensed',
     'summaryText' => false,
-    'afterAjaxUpdate' => 'function() { jQuery("abbr.timeago").timeago(); bindLikeButton(); }',
+    'afterAjaxUpdate' => 'function() { jQuery("abbr.timeago").timeago(); likeButton.bind(); }',
     'responsiveTable' => true,
     'columns' => array(
         array(
-            'header' => 'Pisteet',
-            'name' => 'score',
-            'type' => 'raw',
-            'headerHtmlOptions' => array(
-                'width' => '50px',
-            ),
-        ),
-        array(
             'header' => '',
-            'value' => '$this->grid->controller->widget("LikeButton", array("headingId" => $data["id"]), true);',
+            'value' => '$this->grid->controller->widget("LikeButton", array("headingId" => $data["id"], "likes" => $data["score"]), true);',
             'type' => 'raw',
         ),
         array(
             'header' => 'Otsikko',
             'name' => 'heading',
+            'value' => 'CHtml::link($data["heading"], array("site/heading", "id" => $data["id"]));',
             'type' => 'raw',
         ),
         array(
@@ -39,7 +40,7 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
             ),
         ),
         array(
-            'value' => '$this->grid->controller->widget("TweetButton", array("hashtag" => "botsikko", "text" => $data["heading"]), true)',
+            'value' => '$this->grid->controller->widget("TweetButton", array("hashtag" => "botsikko", "text" => $data["heading"], "link" => "data.yle.fi/botsikot/" . $data["id"]), true)',
             'type' => 'raw',
             'headerHtmlOptions' => array(
                 'width' => '100px',

@@ -44,6 +44,14 @@ class SiteController extends Controller
         ));
     }
 
+    public function actionHeading($id)
+    {
+        $heading = Heading::model()->findByPk($id);
+        $this->render('heading', array(
+            'heading' => $heading,
+        ));
+    }
+
     public function actionError()
     {
         

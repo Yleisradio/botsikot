@@ -52,6 +52,7 @@ return array(
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 'uudet' => 'site/new',
                 'parhaat' => 'site/best',
+                'botsikko' => 'site/heading',
             ),
             'showScriptName' => false,
         ),
