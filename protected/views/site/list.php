@@ -43,7 +43,7 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
             ),
         ),
         array(
-            'value' => '$this->grid->controller->widget("TweetButton", array("hashtag" => "botsikko", "text" => $data["heading"], "link" => "data.yle.fi/botsikot/" . $data["id"]), true)',
+            'value' => '$this->grid->controller->widget("TweetButton", array("hashtag" => "botsikko", "text" => $data["heading"], "link" => Yii::app()->getBaseUrl(true) . "/botsikko?id=" . $data["id"]), true)',
             'type' => 'raw',
             'headerHtmlOptions' => array(
                 'width' => '100px',
