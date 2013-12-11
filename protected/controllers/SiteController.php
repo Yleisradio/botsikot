@@ -47,6 +47,9 @@ class SiteController extends Controller
     public function actionHeading($id)
     {
         $heading = Heading::model()->findByPk($id);
+        Yii::app()->ClientScript->registerMetaTag($heading->heading, null, null, array('property' => 'og:title'));
+        Yii::app()->ClientScript->registerMetaTag(Yii::app()->getBaseUrl(true) . "/botsikko?id=" . $heading->id, null, null, array('property' => 'og:url'));
+        Yii::app()->ClientScript->registerMetaTag('Botsikot', null, null, array('property' => 'og:site_name'));
         $this->render('heading', array(
             'heading' => $heading,
         ));

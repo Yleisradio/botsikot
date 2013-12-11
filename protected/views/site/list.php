@@ -51,6 +51,13 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
             ),
         ),
         array(
+            'value' => '$this->grid->controller->widget("FacebookButton", array("text" => $data["heading"], "link" => Yii::app()->getBaseUrl(true) . "/botsikko?id=" . $data["id"]), true)',
+            'type' => 'raw',
+            'headerHtmlOptions' => array(
+                'width' => '160px',
+            ),
+        ),
+        array(
             'header' => 'Luotu',
             'name' => 'generated',
             'value' => 'Timeago::timeagoOrUnknown($data["generated"])',
