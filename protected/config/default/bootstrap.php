@@ -10,13 +10,13 @@ $environment = 'production';
 $yii = '/var/frameworks/yii/yii-1.1.14/framework/';
 
 if ($environment == 'production') {
-    $config = require((dirname(__FILE__) . '/production.php'));
+    $config =(dirname(__FILE__) . '/production.php');
 } else if ($environment == 'development') {
 
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-    $config = require((dirname(__FILE__) . '/development.php'));
+    $config = (dirname(__FILE__) . '/development.php');
 
     // remove the following lines when in production mode
     defined('YII_DEBUG') or define('YII_DEBUG', true);
