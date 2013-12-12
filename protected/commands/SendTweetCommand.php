@@ -3,6 +3,9 @@
 class SendTweetCommand extends CConsoleCommand
 {
 
+    /**
+     * Tweet the most scored not yet tweeted heading
+     */
     public function run()
     {
         $criteria = new CDbCriteria();

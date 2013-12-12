@@ -3,6 +3,10 @@
 class SiteController extends Controller
 {
 
+    /**
+     * Index page
+     * Lists all the non tweeted headings ordered by score
+     */
     public function actionIndex()
     {
         $headings = new Heading('search');
@@ -16,6 +20,9 @@ class SiteController extends Controller
         ));
     }
 
+    /**
+     * Lists all headings generated today ordered by score
+     */
     public function actionNew()
     {
         $headings = new Heading('search');
@@ -30,6 +37,9 @@ class SiteController extends Controller
         ));
     }
 
+    /**
+     * Lists all headings ordered by score
+     */
     public function actionBest()
     {
         $headings = new Heading('search');
@@ -44,6 +54,10 @@ class SiteController extends Controller
         ));
     }
 
+    /**
+     * Displays a single heading
+     * @param type $id
+     */
     public function actionHeading($id)
     {
         $heading = Heading::model()->findByPk($id);
@@ -57,7 +71,12 @@ class SiteController extends Controller
 
     public function actionError()
     {
-        
+        if ($error = Yii::app()->errorHandler->error) {
+            if (Yii::app()->request->isAjaxRequest)
+                echo $error['message'];
+            else
+                $this->render('error', $error);
+        }
     }
 
 }

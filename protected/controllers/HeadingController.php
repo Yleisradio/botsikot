@@ -3,6 +3,10 @@
 class HeadingController extends Controller
 {
 
+    /**
+     * Increase the score of heading by one if this session has not yet done it
+     * @param type $id
+     */
     public function actionScore($id)
     {
         $liked = Yii::app()->user->getState('liked');

@@ -3,7 +3,22 @@
 class GenerateCommand extends CConsoleCommand
 {
 
+    /**
+     * Create a file with the source material to /data/headings
+     * Create a file with the generated headings to /data/generated_headings 
+     */
     public function run()
+    {
+        $this->getSourceMaterial();
+        $this->generateHeadings();
+    }
+
+    /**
+     * Save the source material to data/headings
+     * NOTE: This function does not work out of the box as it relies on database tables not in the scope of this project.
+     * Included only for demonstration purposes.
+     */
+    protected function getSourceMaterial()
     {
         $sql = 'SELECT site.title, facebook_shares + linkedin_shares + twitter_tweets AS shares
                 FROM site
@@ -19,10 +34,16 @@ class GenerateCommand extends CConsoleCommand
             fputs($headings, $site['title'] . "\r\n");
         }
         fclose($headings);
+    }
 
-        $cmd = 'python ' . Yii::app()->basePath . '/python/titles.py ' . Yii::app()->basePath . '/data/headings'  . ' > ' . Yii::app()->basePath . '/data/generated_headings';
+    /**
+     * Generate the headings using the source material at data/headings
+     */
+    protected function generateHeadings()
+    {
+        $cmd = 'python ' . Yii::app()->basePath . '/python/titles.py ' . Yii::app()->basePath . '/data/headings' . ' > ' . Yii::app()->basePath . '/data/generated_headings';
         exec($cmd);
-        
+
         $generatedHeadings = fopen(Yii::app()->basePath . '/data/generated_headings', 'r');
         if ($generatedHeadings) {
             while (($heading = fgets($generatedHeadings, 4096)) !== false) {
