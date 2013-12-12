@@ -29,7 +29,7 @@ You can also implement your own way of fetching the source material from a datab
 ## Usage
 
 ### Generating headings
-You need to customize botsikot/protected/command/GenerateCommand.php for this to work with your source material
+You need to customize botsikot/protected/command/GenerateCommand.php for this to work with your source material.
 `php5 botsikot/protected/ yiic.php generate`
 
 ### Send Tweets
@@ -40,3 +40,10 @@ You need to customize botsikot/protected/command/GenerateCommand.php for this to
 - `git pull https://github.com/Zeikko/botsikot.git`
 - `cd kato-ite/protected`
 - `./deploy.sh`
+
+## Thanks to
+- Github user grantslatton - Python script for generating headings https://github.com/grantslatton
+- Ryan McGeary - Timeago is a jQuery plugin http://timeago.yarp.com/
+- James Mallison - Twitter-API-PHP : Simple PHP wrapper for the v1.1 API http://github.com/j7mbo/twitter-api-php
+- Clevertech - YiiBooster http://yiibooster.clevertech.biz/
+- limi7less - minScript https://bitbucket.org/limi7less/minscript/wiki/Home
