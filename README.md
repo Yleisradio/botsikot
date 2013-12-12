@@ -23,6 +23,7 @@
 ## Usage
 
 ### Generating headings
+You need to customize botsikot/protected/command/GenerateCommand.php for this to work with your source material
 `php5 botsikot/protected/ yiic.php generate`
 
 ### Send Tweets

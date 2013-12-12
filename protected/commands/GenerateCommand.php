@@ -38,6 +38,7 @@ class GenerateCommand extends CConsoleCommand
 
     /**
      * Generate the headings using the source material at data/headings
+     * The source material needs to be a text file where entries are separated by line break.
      */
     protected function generateHeadings()
     {
