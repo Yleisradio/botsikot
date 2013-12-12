@@ -1,5 +1,11 @@
 # Botsikot
-
+Botsikot is a web application that creates fictional headlines applying Markov Chains to real headlines used as source material.
+Users can give "thumbs up" to headlines displayed in a list.
+The headlines with the most thumbs up can be tweeted automatically.
+Botsikot can be customized to generate other kind of content by changing the source material.
+Botsikot does not work out of the box as it does not include enough source material.
+You need to manually put the source material to `botsikot/protected/data/headings` and comment out line 13 in `botsikot/protected/commands/GenerateCommand.php`
+You can also implement your own way of fetching the source material from a database.
 
 ## Dependencies
 - Yii Framework 1.1.14 ( http://www.yiiframework.com/download/ )
@@ -32,5 +38,5 @@ You need to customize botsikot/protected/command/GenerateCommand.php for this to
 ## Updating
 - `git reset --hard`
 - `git pull https://github.com/Zeikko/botsikot.git`
-- `cd kato-ite/protectedv
+- `cd kato-ite/protected`
 - `./deploy.sh`
