@@ -16,7 +16,7 @@ You can also implement your own way of fetching the source material from a datab
 - APC-Cache
 
 ## Installation
-- `git clone https://github.com/Zeikko/botsikot.git`
+- `git clone https://github.com/Yleisradio/botsikot.git`
 - `cd botsikot/protected`
 - `./deploy.sh`
 - Download the latest version of Yii framework (1.x.x) from http://www.yiiframework.com/download/
