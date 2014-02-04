@@ -28,7 +28,7 @@ class SendTweetCommand extends CConsoleCommand
             $requestMethod = 'POST';
 
             $postfields = array(
-                'status' => $heading->heading . ' ' . Yii::app()->params['tweetLinkBaseUrl'] . "/botsikko?id=" . $heading->id . ' #botsikko',
+                'status' => html_entity_decode($heading->heading) . ' ' . Yii::app()->params['tweetLinkBaseUrl'] . "/botsikko?id=" . $heading->id . ' #botsikko',
             );
 
             $twitter = new TwitterAPIExchange($settings);
