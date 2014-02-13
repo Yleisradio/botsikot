@@ -11,7 +11,7 @@ class Timeago
      * @param type $timestamp
      * @return string
      */
-    public function timeagoOrUnknown($timestamp)
+    public static function timeagoOrUnknown($timestamp)
     {
         if (!$timestamp) {
             return 'Ei tiedossa';

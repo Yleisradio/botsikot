@@ -3,9 +3,23 @@
 class LikeButton extends CWidget
 {
 
+    public $selector = '.like';
+    public $url;
     public $liked = false;
     public $headingId;
     public $likes;
+
+    public function init()
+    {
+        Yii::app()->clientScript->registerScriptFile(
+                Yii::app()->assetManager->publish(
+                        Yii::getPathOfAlias('webroot.protected.components.js') . '/likeButton.js'
+                )
+        );
+        if (!$this->url) {
+            $this->url = Yii::app()->createUrl('heading/score');
+        }
+    }
 
     public function run()
     {
@@ -15,41 +29,17 @@ class LikeButton extends CWidget
                 $this->liked = true;
             }
         }
-        
+
+
+
         Yii::app()->clientScript->registerScript('likeButton', "
-            var likeButton = (function() {
-                $(document).ready(function() {
-                    likeButton.bind();
+            $(document).ready(function() {
+                $('.like').likeButton({
+                    url: '" . $this->url . "'
                 });
-                var onSuccess;
-                return {
-                    setOnSuccess: function(callbackFunction) {
-                        onSuccess = callbackFunction;
-                    },
-                    bind: function bind() {
-                        $('.like').on('click', function(event) {
-                            $.ajax({
-                                url: '" . Yii::app()->createUrl('heading/score') . "',
-                                data: {
-                                    id: $(event.currentTarget).attr('data-id')
-                                },
-                                success: function() {
-                                    if(typeof onSuccess === 'function') {
-                                        onSuccess(event.currentTarget);
-                                    }
-                                    $(event.currentTarget).removeClass('btn-primary');
-                                    $(event.currentTarget).addClass('btn-inverse');
-                                    var likes = $('[data-id=\'' + $(event.currentTarget).attr('data-id') + '\'] .likes').html();
-                                    $('[data-id=\'' + $(event.currentTarget).attr('data-id') + '\'] .likes').html(parseInt(likes, 10) + 1);
-                                }
-                            });
-                            return false;
-                        });
-                    }
-                }
-            })();
-        ", CClientScript::POS_HEAD);
-        
+          });
+        ");
+
         $this->render('likeButton');
     }
 

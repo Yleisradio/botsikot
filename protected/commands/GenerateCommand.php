@@ -7,7 +7,7 @@ class GenerateCommand extends CConsoleCommand
      * Create a file with the source material to /data/headings
      * Create a file with the generated headings to /data/generated_headings 
      */
-    public function run()
+    public function run($args)
     {
         $this->getSourceMaterial();
         $this->generateHeadings();

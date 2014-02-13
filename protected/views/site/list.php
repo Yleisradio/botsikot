@@ -2,13 +2,15 @@
     $(document).ready(function() {
         jQuery("abbr.timeago").timeago();
 
-        likeButton.setOnSuccess(function() {
-            $('#all-headings-grid').yiiGridView.update('all-headings-grid', {
-                complete: function() {
-                    likeButton.bind();
-                }
+        if (typeof likeButton !== 'undefined') {
+            likeButton.setOnSuccess(function() {
+                $('#all-headings-grid').yiiGridView.update('all-headings-grid', {
+                    complete: function() {
+                        likeButton.bind();
+                    }
+                });
             });
-        });
+        }
     });
 </script>
 <?php
