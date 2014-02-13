@@ -6,7 +6,9 @@
             likeButton.setOnSuccess(function() {
                 $('#all-headings-grid').yiiGridView.update('all-headings-grid', {
                     complete: function() {
-                        likeButton.bind();
+                        $('.like').likeButton({
+                            url: '<?php echo Yii::app()->createUrl('heading/score'); ?>'
+                        });
                     }
                 });
             });
@@ -20,7 +22,7 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'filter' => $headings,
     'type' => 'striped bordered condensed',
     'summaryText' => false,
-    'afterAjaxUpdate' => 'function() { jQuery("abbr.timeago").timeago(); likeButton.bind(); }',
+    'afterAjaxUpdate' => 'function() { jQuery("abbr.timeago").timeago(); $(".like").likeButton({url: "' . Yii::app()->createUrl('heading/score') . '"}); }',
     'responsiveTable' => true,
     'columns' => array(
         array(
