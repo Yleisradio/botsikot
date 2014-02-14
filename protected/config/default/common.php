@@ -27,9 +27,29 @@ return array(
     ),
     // application components
     'components' => array(
-        'bootstrap' => array(
-            'class' => 'ext.bootstrap.components.Bootstrap',
-            'responsiveCss' => true,
+        'widgetFactory' => array(
+            'widgets' => array(
+                'CLinkPager' => array(
+                    'header' => false,
+                    'footer' => false,
+                    'nextPageLabel' => '<i class="icon-angle-right"></i>',
+                    'prevPageLabel' => '<i class="icon-angle-left"></i>',
+                    'selectedPageCssClass' => 'active',
+                    'hiddenPageCssClass' => 'disabled',
+                    'htmlOptions' => array(
+                        'class' => 'pagination',
+                    ),
+                    'cssFile' => false,
+                ),
+                'CGridView' => array(
+                    'htmlOptions' => array(
+                        'class' => 'table-responsive bordered'
+                    ),
+                    'pagerCssClass' => '',
+                    'cssFile' => false,
+                    'itemsCssClass' => 'table table-striped table-condensed',
+                ),
+            )
         ),
         'mail' => array(
             'class' => 'ext.yii-mail.YiiMail',
@@ -83,9 +103,9 @@ return array(
         ),
     ),
     'params' => array(
-        'oauthAccessToken' => "",
-        'oauthAccessTokenSecret' => "",
-        'consumerKey' => "",
-        'consumerSecret' => "",
+        'profilesApi' => array(
+            'appId' => '',
+            'appKey' => '',
+        )
     ),
 );

@@ -16,14 +16,12 @@
     });
 </script>
 <?php
-$this->widget('bootstrap.widgets.TbExtendedGridView', array(
+$this->widget('zii.widgets.grid.CGridView', array(
     'id' => 'all-headings-grid',
     'dataProvider' => $headingsData,
     'filter' => $headings,
-    'type' => 'striped bordered condensed',
     'summaryText' => false,
     'afterAjaxUpdate' => 'function() { jQuery("abbr.timeago").timeago(); $(".like").likeButton({url: "' . Yii::app()->createUrl('heading/score') . '"}); }',
-    'responsiveTable' => true,
     'columns' => array(
         array(
             'name' => 'score',
@@ -41,7 +39,7 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
             'type' => 'raw',
         ),
         array(
-            'value' => 'CHtml::link("<i class=\"icon-search\"></i> Googlaa", "https://www.google.fi/#q=" . urlencode($data["heading"]), array("class" => "btn", "target" => "_blank"))',
+            'value' => 'CHtml::link("<i class=\"icon-search\"></i> Googlaa", "https://www.google.fi/#q=" . urlencode($data["heading"]), array("class" => "btn btn-default", "target" => "_blank"))',
             'type' => 'raw',
             'headerHtmlOptions' => array(
                 'width' => '100px',

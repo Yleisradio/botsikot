@@ -6,7 +6,9 @@
             defaults = {
         onSuccess: function() {
         },
-        url: ''
+        url: '',
+        appId: '',
+        appKey: '',
     };
 
     // The actual plugin constructor
@@ -20,33 +22,58 @@
 
     Plugin.prototype.init = function() {
         var options = this.options;
+        var yleTunnus = require('yleTunnus');
+        yleTunnus.init(function(isAuthenticated, userId) {
+            getLikes(userId, options);
+        });
         $(this.element).on('click', function(ev) {
             var yleTunnus = require('yleTunnus');
             yleTunnus.init(function(isAuthenticated, userId) {
                 if (isAuthenticated) {
-                    like(ev, options);
+                    getLikes(userId, options);
+                    like(ev, options, userId);
                 }
                 else {
                     yleTunnus.openLoginModal(function(userId) {
-                        like();
+                        like(ev, options, userId);
+                        $("#logout-button").show();
+                        $("#login-button").hide();
                     });
                 }
             });
         });
     };
 
-    function like(ev, options) {
+    function getLikes(userId, options) {
+        var that = this;
+        if(that.prototype.likes === 'undefined') {
+        return $.ajax({
+            url: 'https://profiles.api.yle.fi/v1/api/' + userId + "/botsikot/like?app_id=" + options.appId + "&app_key=" + options.appKey,
+            contentType: 'application/json'
+        }).done(function(data) {
+            that.prototype.likes = data;
+            return data;
+        });
+        }
+        else {
+            return that.prototype.likes;
+        }
+    }
+
+    function like(ev, options, userId) {
         $.ajax({
             url: options.url,
             data: {
-                id: $(ev.currentTarget).attr('data-id')
+                id: $(ev.currentTarget).attr('data-id'),
+                userId: userId
             },
             success: function() {
                 if (typeof options.onSuccess === 'function') {
                     options.onSuccess(ev.currentTarget);
                 }
                 $(ev.currentTarget).removeClass('btn-primary');
-                $(ev.currentTarget).addClass('btn-inverse');
+                $(ev.currentTarget).addClass('btn-primary');
+                $(ev.currentTarget).attr('disabled', 'disabled');
                 var likes = $('[data-id=\'' + $(ev.currentTarget).attr('data-id') + '\'] .likes').html();
                 $('[data-id=\'' + $(ev.currentTarget).attr('data-id') + '\'] .likes').html(parseInt(likes, 10) + 1);
             }

@@ -35,7 +35,9 @@ class LikeButton extends CWidget
         Yii::app()->clientScript->registerScript('likeButton', "
             $(document).ready(function() {
                 $('.like').likeButton({
-                    url: '" . $this->url . "'
+                    url: '" . $this->url . "',
+                    appId: '" . Yii::app()->params['profilesApi']['appId'] . "',
+                    appKey: '" . Yii::app()->params['profilesApi']['appKey'] . "',    
                 });
           });
         ");
