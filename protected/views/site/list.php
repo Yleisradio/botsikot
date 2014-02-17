@@ -1,16 +1,15 @@
 <script type="text/javascript">
+    var refreshHeadings;
     $(document).ready(function() {
         jQuery("abbr.timeago").timeago();
 
-        if (typeof likeButton !== 'undefined') {
-            likeButton.setOnSuccess(function() {
-                $('#all-headings-grid').yiiGridView.update('all-headings-grid', {
-                    complete: function() {
-                        $('.like').likeButton({
-                            url: '<?php echo Yii::app()->createUrl('heading/score'); ?>'
-                        });
-                    }
-                });
+        refreshHeadings = function refreshHeadings() {
+            $('#all-headings-grid').yiiGridView.update('all-headings-grid', {
+                complete: function() {
+                    $('.like').likeButton({
+                        url: '<?php echo Yii::app()->createUrl('heading/score'); ?>'
+                    });
+                }
             });
         }
     });
@@ -26,7 +25,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
         array(
             'name' => 'score',
             'header' => 'Peukut',
-            'value' => '$this->grid->controller->widget("LikeButton", array("headingId" => $data["id"], "likes" => $data["score"]), true);',
+            'value' => '$this->grid->controller->widget("LikeButton", array("onSuccess" => "refreshHeadings", "headingId" => $data["id"], "likes" => $data["score"]), true);',
             'type' => 'raw',
             'headerHtmlOptions' => array(
                 'width' => '90px',

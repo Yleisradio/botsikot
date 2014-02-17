@@ -8,6 +8,7 @@ class LikeButton extends CWidget
     public $liked = false;
     public $headingId;
     public $likes;
+    public $onSuccess;
 
     public function init()
     {
@@ -30,14 +31,13 @@ class LikeButton extends CWidget
             }
         }
 
-
-
         Yii::app()->clientScript->registerScript('likeButton', "
             $(document).ready(function() {
                 $('.like').likeButton({
                     url: '" . $this->url . "',
                     appId: '" . Yii::app()->params['profilesApi']['appId'] . "',
-                    appKey: '" . Yii::app()->params['profilesApi']['appKey'] . "',    
+                    appKey: '" . Yii::app()->params['profilesApi']['appKey'] . "', 
+                    onSuccess: " . $this->onSuccess . ",
                 });
           });
         ");
