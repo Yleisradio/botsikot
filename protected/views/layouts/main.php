@@ -11,7 +11,7 @@ $this->beginContent('//layouts/base');
                 ),
                 'encodeLabel' => false,
                 'items' => array(
-                    array('label' => '<i class="icon-bolt"></i>Botsikot', 'url' => array('/')),
+                    array('label' => '<span class="icon-bolt"></span>Botsikot', 'url' => array('/')),
                     array('label' => '<span class="icon-star"></span>Parhaat', 'url' => array('/parhaat')),
                     array('label' => '<span class="icon-time"></span>Uudet', 'url' => array('/uudet')),
                 ),
