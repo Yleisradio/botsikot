@@ -103,9 +103,5 @@ return array(
         ),
     ),
     'params' => array(
-        'profilesApi' => array(
-            'appId' => '',
-            'appKey' => '',
-        )
     ),
 );
