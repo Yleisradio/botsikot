@@ -22,50 +22,16 @@
 
     Plugin.prototype.init = function() {
         var options = this.options;
-        var yleTunnus = require('yleTunnus');
-        yleTunnus.init(function(isAuthenticated, userId) {
-            getLikes(userId, options);
-        });
         $(this.element).on('click', function(ev) {
-            var yleTunnus = require('yleTunnus');
-            yleTunnus.init(function(isAuthenticated, userId) {
-                if (isAuthenticated) {
-                    getLikes(userId, options);
-                    like(ev, options, userId);
-                }
-                else {
-                    yleTunnus.openLoginModal(function(userId) {
-                        like(ev, options, userId);
-                        $("#logout-button").show();
-                        $("#login-button").hide();
-                    });
-                }
-            });
+            like(ev, options);
         });
     };
 
-    function getLikes(userId, options) {
-        var that = this;
-        if(that.prototype.likes === 'undefined') {
-        return $.ajax({
-            url: 'https://profiles.api.yle.fi/v1/api/' + userId + "/botsikot/like?app_id=" + options.appId + "&app_key=" + options.appKey,
-            contentType: 'application/json'
-        }).done(function(data) {
-            that.prototype.likes = data;
-            return data;
-        });
-        }
-        else {
-            return that.prototype.likes;
-        }
-    }
-
-    function like(ev, options, userId) {
+    function like(ev, options) {
         $.ajax({
             url: options.url,
             data: {
                 id: $(ev.currentTarget).attr('data-id'),
-                userId: userId
             },
             success: function() {
                 if (typeof options.onSuccess === 'function') {

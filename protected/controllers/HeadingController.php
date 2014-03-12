@@ -9,17 +9,19 @@ class HeadingController extends Controller
      */
     public function actionScore($id)
     {
-        $likes = array();
-        $likes = ProfilesApi::getAllFeatureDataItems($userId, 'botsikot', 'like');
+        $liked = Yii::app()->user->getState('liked');
+        if (!$liked) {
+            $liked = array();
+        }
 
-        var_dump($likes);
-        die();
-        if (!in_array($id, $likes)) {
+        if (!in_array($id, $liked)) {
             $heading = Heading::model()->findByPk($id);
             $heading->score = $heading->score + 1;
             $heading->save();
-            ProfilesApi::addFeatureDataItem($userId, 'botsikot', 'like', $id);
         }
+        
+        $liked[] = $id;
+        Yii::app()->user->setState('liked', $liked);
     }
 
 }
