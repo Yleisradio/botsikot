@@ -16,7 +16,11 @@ class Timeago
         if (!$timestamp) {
             return 'Ei tiedossa';
         } else {
-            return CHtml::tag("abbr", array("class" => "timeago", "title" => date("r", $timestamp)), date("d.m.Y H:i", $timestamp));
+            return CHtml::tag("abbr", array(
+                        "class" => "timeago",
+                        "title" => date("r", $timestamp),
+                            ), date("d.m.Y H:i", $timestamp)
+            );
         }
     }
 
