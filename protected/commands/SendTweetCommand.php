@@ -6,7 +6,7 @@ class SendTweetCommand extends CConsoleCommand
     /**
      * Tweet the most scored not yet tweeted heading
      */
-    public function run()
+    public function run($args)
     {
         $criteria = new CDbCriteria();
         $criteria->condition = 'score > 0 AND tweeted = 0';
