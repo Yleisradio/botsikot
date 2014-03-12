@@ -8,7 +8,7 @@
         },
         url: '',
         appId: '',
-        appKey: '',
+        appKey: ''
     };
 
     // The actual plugin constructor
@@ -24,6 +24,7 @@
         var options = this.options;
         $(this.element).on('click', function(ev) {
             like(ev, options);
+            return false;
         });
     };
 
@@ -31,7 +32,7 @@
         $.ajax({
             url: options.url,
             data: {
-                id: $(ev.currentTarget).attr('data-id'),
+                id: $(ev.currentTarget).attr('data-id')
             },
             success: function() {
                 if (typeof options.onSuccess === 'function') {
@@ -54,6 +55,6 @@
                         new Plugin(this, options));
             }
         });
-    }
+    };
 
 })(jQuery, window, document);
